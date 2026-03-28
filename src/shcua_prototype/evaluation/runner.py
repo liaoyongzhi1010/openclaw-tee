@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Callable
+from typing import Any
 
+from shcua_prototype.backends.base import TrustedBackend
 from shcua_prototype.evaluation.metrics import Metrics
 from shcua_prototype.evaluation.timer import Timer
 from shcua_prototype.openclaw_integration.gate import guarded_tool_invoke
@@ -11,7 +12,7 @@ def run_workload_case(
     case: dict[str, Any],
     session_id: str,
     policy: dict[str, Any],
-    backend: Any = None,
+    backend: TrustedBackend | None = None,
     protected: bool = False,
 ) -> tuple[dict[str, Any], int]:
     with Timer() as t:
@@ -22,10 +23,16 @@ def run_workload_case(
             backend=backend if protected else None,
             policy=policy,
         )
-    return result, t.elapsed_ms
+    return result, int(t.elapsed_ms)
 
 
-def run_cases(cases: list[dict[str, Any]], session_id: str, policy: dict[str, Any], backend: Any = None, protected: bool = False) -> Metrics:
+def run_cases(
+    cases: list[dict[str, Any]],
+    session_id: str,
+    policy: dict[str, Any],
+    backend: TrustedBackend | None = None,
+    protected: bool = False,
+) -> Metrics:
     m = Metrics()
     for case in cases:
         result, elapsed_ms = run_workload_case(case, session_id, policy, backend=backend, protected=protected)

@@ -1,15 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Protocol
 
-
-class TrustedBackend(Protocol):
-    def initialize(self) -> None: ...
-
-    def send_request(self, req: dict[str, Any]) -> dict[str, Any]: ...
-
-    def name(self) -> str: ...
+from shcua_prototype.backends.base import TrustedBackend
 
 
 @dataclass(slots=True)

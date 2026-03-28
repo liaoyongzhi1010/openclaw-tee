@@ -1,19 +1,12 @@
 from __future__ import annotations
 
-from typing import Any, Callable, Protocol
+from typing import Any, Callable
 
+from shcua_prototype.backends.base import TrustedBackend
 from shcua_prototype.core.decision import derive_decision
 from shcua_prototype.core.request import build_trusted_request
 from shcua_prototype.core.risk import assess_risk
 from shcua_prototype.openclaw_integration.mapper import map_tool_call_to_operation
-
-
-class TrustedBackend(Protocol):
-    def initialize(self) -> None: ...
-
-    def send_request(self, req: dict[str, Any]) -> dict[str, Any]: ...
-
-    def name(self) -> str: ...
 
 
 def _default_direct_executor(tool_name: str, tool_args: dict[str, Any]) -> dict[str, Any]:

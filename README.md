@@ -12,20 +12,20 @@ Core model chain:
 
 ## Implemented core path
 
-- `core/operation.py`
-- `core/risk.py`
-- `core/decision.py`
-- `core/request.py`
-- `openclaw_integration/mapper.py`
-- `openclaw_integration/gate.py`
+- `src/shcua_prototype/core/operation.py`
+- `src/shcua_prototype/core/risk.py`
+- `src/shcua_prototype/core/decision.py`
+- `src/shcua_prototype/core/request.py`
+- `src/shcua_prototype/openclaw_integration/mapper.py`
+- `src/shcua_prototype/openclaw_integration/gate.py`
 
 ## Distributed orchestration additions
 
-- `openclaw_integration/router.py`
-- `openclaw_integration/backend_factory.py`
-- `configs/deployment_planes.yaml`
-- `backends/http_backend.py`
-- `scripts/run_distributed_demo.py`
+- `src/shcua_prototype/openclaw_integration/router.py`
+- `src/shcua_prototype/openclaw_integration/backend_factory.py`
+- `src/shcua_prototype/configs/deployment_planes.yaml`
+- `src/shcua_prototype/backends/http_backend.py`
+- `src/shcua_prototype/scripts/run_distributed_demo.py`
 
 ## Notes
 
@@ -43,6 +43,16 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
+## Layout
+
+- `src/shcua_prototype/core`: operation, risk, decision, and trusted-request domain models
+- `src/shcua_prototype/openclaw_integration`: tool-call mapping, routing, and backend selection
+- `src/shcua_prototype/backends`: transport backends, including HTTP, vsock stubs, and mock backend
+- `src/shcua_prototype/trusted_plane`: trusted-side request handling
+- `src/shcua_prototype/workloads`: example workload cases
+- `src/shcua_prototype/configs`: packaged YAML policy and deployment config
+- `tests`: basic regression coverage for config loading and guarded execution flow
+
 ## Run
 
 Recommended entry points:
@@ -51,4 +61,10 @@ Recommended entry points:
 python -m shcua_prototype.scripts.run_baseline
 python -m shcua_prototype.scripts.run_protected
 python -m shcua_prototype.scripts.run_distributed_demo
+```
+
+## Test
+
+```bash
+python -m pytest
 ```
