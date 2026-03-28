@@ -1,0 +1,7 @@
+workloads:
+  document_organization:
+    loops: 10
+  protected_config_modification:
+    loops: 10
+  high_risk_command_export:
+    loops: 10

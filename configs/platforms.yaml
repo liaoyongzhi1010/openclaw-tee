@@ -1,0 +1,15 @@
+platforms:
+  tdx:
+    backend: tdx
+    cid: 3
+    port: 5001
+  sev:
+    backend: sev
+    cid: 4
+    port: 5001
+  trustzone:
+    backend: trustzone
+    client_path: tz_client
+  keystone:
+    backend: keystone
+    client_path: keystone_client

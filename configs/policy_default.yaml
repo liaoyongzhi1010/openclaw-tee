@@ -1,0 +1,45 @@
+risk_thresholds:
+  low: 0
+  medium: 25
+  high: 50
+  critical: 80
+
+level_to_decision:
+  low: direct
+  medium: notify
+  high: trusted
+  critical: deny
+
+action_scores:
+  read: 5
+  modify: 40
+  delete: 65
+  exec: 70
+  export: 80
+
+object_rules:
+  - prefix: "/etc"
+    score: 30
+  - prefix: "/var/lib"
+    score: 20
+
+context_scores:
+  outside_workspace: 25
+  untrusted_source: 20
+  no_user_confirmation: 10
+
+effect_scores:
+  persistence: 15
+  exfiltration: 35
+  privilege_escalation: 35
+
+force_trusted_actions:
+  - exec
+
+deny_object_prefixes:
+  - "/root/.ssh"
+
+notify_levels:
+  - medium
+  - high
+  - critical

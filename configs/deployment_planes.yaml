@@ -1,0 +1,22 @@
+planes:
+  main:
+    description: "TDX-hosted OpenClaw orchestrates local TDX and remote embedded endpoints"
+    targets:
+      local_tdx:
+        backend: tdx
+        cid: 3
+        port: 5001
+      rpi_trustzone:
+        backend: trustzone
+        endpoint_url: "http://192.168.10.21:19001/trusted-request"
+      u74_keystone:
+        backend: keystone
+        endpoint_url: "http://192.168.10.31:19002/trusted-request"
+
+  parallel_sev:
+    description: "SEV-only mirrored plane for cross-platform comparison"
+    targets:
+      local_sev:
+        backend: sev
+        cid: 4
+        port: 5001
