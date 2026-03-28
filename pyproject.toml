@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shcua-prototype"
+version = "0.1.0"
+description = "Prototype package for SHCUA orchestration and trusted execution routing."
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+  "shcua_prototype",
+  "shcua_prototype.backends",
+  "shcua_prototype.core",
+  "shcua_prototype.evaluation",
+  "shcua_prototype.openclaw_integration",
+  "shcua_prototype.openclaw_integration.adapters",
+  "shcua_prototype.scripts",
+  "shcua_prototype.trusted_plane",
+  "shcua_prototype.trusted_plane.adapters",
+  "shcua_prototype.workloads",
+]
+
+[tool.setuptools.package-dir]
+shcua_prototype = "."
+
+[tool.setuptools.package-data]
+shcua_prototype = ["configs/*.yaml", "openclaw_integration/patch_notes.md"]

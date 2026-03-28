@@ -32,3 +32,23 @@ Core model chain:
 - `gate.guarded_tool_invoke` now supports backend dynamic resolution by `(plane, target_id)`.
 - `TrustedRequest` now carries `target_id`, `tee_type`, and `plane` to align with cross-platform routing and audit.
 - TDX/SEV transport backends are still stubs for real vsock integration.
+
+## Setup
+
+Create and activate a virtual environment, then install the local package:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+## Run
+
+Recommended entry points:
+
+```bash
+python -m shcua_prototype.scripts.run_baseline
+python -m shcua_prototype.scripts.run_protected
+python -m shcua_prototype.scripts.run_distributed_demo
+```
